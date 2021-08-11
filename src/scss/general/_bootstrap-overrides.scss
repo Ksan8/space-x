@@ -1,0 +1,12 @@
+
+// https://getbootstrap.com/docs/5.0/customize/overview/
+
+/* Bootstrap variable overrides */
+
+$dark: #212529;
+
+@import '~bootstrap/scss/variables';
+
+$theme-colors: (
+  dark: $dark,
+);

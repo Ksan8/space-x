@@ -1,5 +1,8 @@
 @import '~bootstrap/scss/functions';
 
+/* Bootstrap variable overrides */
+@import './bootstrap-overrides';
+
 $font-primary: 'Exo', sans-serif;
 $font-secondary: 'Open Sans', sans-serif;
 
