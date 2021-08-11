@@ -9,10 +9,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let launch of launches">
+      <tr *ngFor="let launch of launches" class="position-relative">
         <td>{{ launch.flight_number }}</td>
         <td>{{ launch.launch_year }}</td>
-        <td>{{ launch.rocket_name }}</td>
+        <td>
+          <a *ngIf="launch.link" [href]="launch.link" target="_blank" class="stretched-link">{{ launch.rocket_name }}</a>
+          <span *ngIf="!launch.link">{{ launch.rocket_name }}</span>
+        </td>
         <td>{{ launch.details }}</td>
       </tr>
     </tbody>

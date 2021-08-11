@@ -3,10 +3,16 @@
 
 /* Bootstrap variable overrides */
 
+$primary: #ff972e;
+$success: #038200;
+$danger: #FF478B;
 $dark: #212529;
 
 @import '~bootstrap/scss/variables';
 
 $theme-colors: (
+  primary: $primary,
+  success: $success,
+  danger: $danger,
   dark: $dark,
 );

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { Launch } from '../models/launch';
 
+import { Launch } from '../models/launch';
 import { LaunchService } from '../services/launch.service';
 
 /* TODO:
@@ -19,7 +19,9 @@ import { LaunchService } from '../services/launch.service';
 export class LaunchesComponent implements OnInit {
   launches: Launch[] = [];
 
-  constructor(private launchService: LaunchService) { }
+  constructor(
+    private launchService: LaunchService,
+  ) { }
 
   ngOnInit(): void {
     this.getLaunches();
