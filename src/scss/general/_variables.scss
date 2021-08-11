@@ -1,4 +1,12 @@
 @import '~bootstrap/scss/functions';
 
+$font-primary: 'Exo', sans-serif;
+$font-secondary: 'Open Sans', sans-serif;
+
+/* Brand colors */
+$gray-dk: #252a2e;
+$gray: #aeb3b5; // meets AA req's for text on $gray-dk
+$white: #c5c8c9;
+
 /* Required imports */
 @import '~bootstrap/scss/mixins';

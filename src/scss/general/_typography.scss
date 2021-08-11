@@ -1,0 +1,14 @@
+h1,
+h2,
+h3 {
+  font-family: $font-primary;
+  font-weight: normal;
+  letter-spacing: 0.06rem;
+  color: $white;
+}
+
+body {
+  font-family: $font-secondary;
+  background-color: $gray-dk;
+  color: $gray;
+}
