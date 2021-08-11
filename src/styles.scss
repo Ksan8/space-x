@@ -1,3 +1,11 @@
 @import 'general/variables'; // includes bootstrap-overrides
 @import 'general/bootstrap';
 @import 'general/typography';
+
+body {
+  height: 100vh;
+}
+
+.container {
+  padding: 1.5rem 1rem;
+}
