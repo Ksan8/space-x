@@ -1,15 +1,10 @@
-@import '~bootstrap/scss/functions';
-
-/* Bootstrap variable overrides */
-@import './bootstrap-overrides';
-
 $font-primary: 'Exo', sans-serif;
 $font-secondary: 'Open Sans', sans-serif;
 
 /* Brand colors */
+$primary: #ff972e;
+$black: #212529;
 $gray-dk: #252a2e;
+$gray-md: #2f363a;
 $gray: #aeb3b5; // meets AA req's for text on $gray-dk
 $white: #c5c8c9;
-
-/* Required imports */
-@import '~bootstrap/scss/mixins';
