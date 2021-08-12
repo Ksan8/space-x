@@ -32,6 +32,12 @@ export class LaunchesComponent implements OnInit {
     this.getLaunches();
   }
 
+  openLink(launch: Launch): void {
+    if (!launch.link) return;
+
+    window.open(launch.link);
+  }
+
   private getLaunches(): void {
     this.launchService.getLaunches()
       .pipe(take(1))

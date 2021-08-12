@@ -1,3 +1,25 @@
-tbody tr:hover {
-  cursor: default;
+@import 'base/variables';
+
+.mat-table,
+.mat-paginator {
+  background-color: $black;
+  font-family: $font-secondary;
+}
+
+.mat-cell, .mat-footer-cell {
+  color: $white;
+}
+
+th.mat-header-cell, td.mat-cell {
+  padding: 0.5rem;
+}
+
+.mat-row.clickable:hover {
+  background-color: $gray-md;
+  cursor: pointer;
+}
+
+.mat-cell.clickable {
+  color: $primary;
+  text-decoration: underline;
 }
