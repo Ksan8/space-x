@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { Launch } from '../models/launch';
 import { LaunchService } from '../services/launch.service';
 
 /* TODO:
-  - figure out if it's possible to only fetch specific data (it is if using GraphQL instead)
-  - add better typing
   - handle errors; add retry logic
-  - create & style table to display data
 */
+const LAUNCHES_DATA: Launch[] = [];
 
 @Component({
   selector: 'app-launches',
@@ -17,7 +18,11 @@ import { LaunchService } from '../services/launch.service';
   styleUrls: ['./launches.component.scss']
 })
 export class LaunchesComponent implements OnInit {
-  launches: Launch[] = [];
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  dataSource = new MatTableDataSource<Launch>([]);
+  displayedColumns = ['flight_number', 'launch_year', 'rocket_name', 'details'];
 
   constructor(
     private launchService: LaunchService,
@@ -32,7 +37,7 @@ export class LaunchesComponent implements OnInit {
       .pipe(take(1))
       .subscribe(data => {
         for (const launch of data) {
-          this.launches.push({
+          LAUNCHES_DATA.push({
             flight_number: launch.flight_number,
             launch_year: new Date(launch.date_utc).getFullYear(),
             rocket_name: launch.name,
@@ -40,6 +45,10 @@ export class LaunchesComponent implements OnInit {
             link: launch.links.presskit,
           });
         }
+
+        this.dataSource.data = LAUNCHES_DATA;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
   }
 }

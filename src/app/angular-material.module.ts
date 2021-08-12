@@ -8,6 +8,7 @@ import { MatSortModule } from '@angular/material/sort';
 const materialModules = [
   NoopAnimationsModule,
   MatTableModule,
+  MatSortModule,
   MatPaginatorModule,
   MatSortModule
 ];
