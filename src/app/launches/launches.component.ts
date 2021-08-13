@@ -23,6 +23,8 @@ export class LaunchesComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Launch>([]);
   displayedColumns = ['flight_number', 'launch_year', 'rocket_name', 'details'];
+  isMobile = false;
+  firstCol = 'Flight Number';
 
   constructor(
     private launchService: LaunchService,
@@ -30,6 +32,11 @@ export class LaunchesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLaunches();
+    this.isMobile = window.innerWidth < 576;
+
+    if (this.isMobile) {
+      this.firstCol = 'Flight #';
+    }
   }
 
   openLink(launch: Launch): void {

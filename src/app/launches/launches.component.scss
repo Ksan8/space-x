@@ -1,17 +1,33 @@
 @import 'base/variables';
 
+.scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .mat-table,
 .mat-paginator {
   background-color: $black;
   font-family: $font-secondary;
 }
 
-.mat-cell, .mat-footer-cell {
+.mat-header-cell {
   color: $white;
 }
 
-th.mat-header-cell, td.mat-cell {
-  padding: 0.5rem;
+.mat-cell,
+.mat-footer-cell {
+  color: $gray;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  padding: 0.5rem 0.25rem;
+
+  &:first-of-type {
+    padding-left: 1rem;
+  }
 }
 
 .mat-row.clickable:hover {
@@ -19,7 +35,11 @@ th.mat-header-cell, td.mat-cell {
   cursor: pointer;
 }
 
-.mat-cell.clickable {
-  color: $primary;
-  text-decoration: underline;
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+  .mat-cell,
+  .mat-footer-cell {
+    font-size: 0.75rem;
+  }
 }
