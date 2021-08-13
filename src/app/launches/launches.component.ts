@@ -7,9 +7,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Launch } from '../models/launch';
 import { LaunchService } from '../services/launch.service';
 
-/* TODO:
-  - handle errors; add retry logic
-*/
 const LAUNCHES_DATA: Launch[] = [];
 
 @Component({
@@ -25,6 +22,7 @@ export class LaunchesComponent implements OnInit {
   displayedColumns = ['flight_number', 'launch_year', 'rocket_name', 'details'];
   isMobile = false;
   firstCol = 'Flight Number';
+  error = false;
 
   constructor(
     private launchService: LaunchService,
@@ -46,22 +44,29 @@ export class LaunchesComponent implements OnInit {
   }
 
   private getLaunches(): void {
+    this.error = false;
+
     this.launchService.getLaunches()
       .pipe(take(1))
-      .subscribe(data => {
-        for (const launch of data) {
-          LAUNCHES_DATA.push({
-            flight_number: launch.flight_number,
-            launch_year: new Date(launch.date_utc).getFullYear(),
-            rocket_name: launch.name,
-            details: launch.details,
-            link: launch.links.presskit,
-          });
-        }
+      .subscribe(
+        data => {
+          for (const launch of data) {
+            LAUNCHES_DATA.push({
+              flight_number: launch.flight_number,
+              launch_year: new Date(launch.date_utc).getFullYear(),
+              rocket_name: launch.name,
+              details: launch.details,
+              link: launch.links.presskit,
+            });
+          }
 
-        this.dataSource.data = LAUNCHES_DATA;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      });
+          this.dataSource.data = LAUNCHES_DATA;
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        () => {
+          this.error = true;
+        }
+      );
   }
 }

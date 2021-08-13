@@ -28,6 +28,11 @@
   </table>
 </div>
 
+<div *ngIf="error" class="text-center">
+  <p>We're sorry, we've encountered an error fetching launches.</p>
+  <p>Please refresh in a few moments.</p>
+</div>
+
 <mat-paginator [pageSizeOptions]="[15, 25, 50]"
   showFirstLastButtons
   aria-label="Select page of SpaceX launches">
